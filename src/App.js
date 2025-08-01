@@ -118,6 +118,7 @@ function App() {
               setFormData={setFormData}
               handleSubmit={handleSubmit}
               message={message}
+              setMessage={setMessage} 
               loggedInUser={loggedInUser}
               handleLogout={handleLogout}
             />
