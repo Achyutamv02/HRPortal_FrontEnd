@@ -61,17 +61,33 @@ export default function RequestFormPage({ formData, setFormData, handleSubmit })
           {errors.travel_location && <div className="text-danger">{errors.travel_location}</div>}
         </div>
 
-        {/* Reason */}
+        {/*
+  <div className="mb-3">
+    <label className="form-label">Reason</label>
+    <textarea
+      className="form-control"
+      value={formData.reason}
+      onChange={e => setFormData({ ...formData, reason: e.target.value })}
+      placeholder="Enter reason"
+    />
+    {errors.reason && <div className="text-danger">{errors.reason}</div>}
+  </div>
+*/}
+
+
+
+        {/* Justification */}
         <div className="mb-3">
-          <label className="form-label">Reason</label>
+          <label className="form-label">Justification</label>
           <textarea
             className="form-control"
             value={formData.reason}
             onChange={e => setFormData({ ...formData, reason: e.target.value })}
-            placeholder="Enter reason"
+            placeholder="Enter justification"
           />
           {errors.reason && <div className="text-danger">{errors.reason}</div>}
         </div>
+
 
         {/* Amount */}
         <div className="mb-3">
