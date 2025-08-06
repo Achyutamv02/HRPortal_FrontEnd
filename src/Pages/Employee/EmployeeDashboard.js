@@ -16,6 +16,11 @@ export default function EmployeeDashboard() {
         <button className="btn btn-secondary" onClick={() => navigate('/leave-request-form')}>
           Leave Request Form
         </button>
+
+        <button className="btn btn-outline-danger" onClick={() => navigate('/employee-login')}>
+          Logout
+        </button>
+        
       </div>
     </div>
   );
