@@ -13,39 +13,42 @@ export default function AdminLeaveRequestsPage({ leaveRequests, handleLeaveStatu
                 <p>No leave requests submitted yet.</p>
             ) : (
                 <div className="list-group">
-                    {leaveRequests.map((req) => (
-                        <div key={req.id} className="list-group-item">
-                            <p><strong>Name:</strong> {req.name}</p>
-                            <p><strong>Reason:</strong> {req.reason}</p>
-                            <p>
-                                <strong>Date:</strong>{" "}
-                                {req.start_date
-                                    ? req.end_date
-                                        ? `${req.start_date} to ${req.end_date}`
-                                        : req.start_date
-                                    : "—"}
-                            </p>
-                            <p><strong>Status:</strong> {req.status}</p>
+                    {[...leaveRequests]
+                        .sort((a, b) => (a.status === "Pending" ? -1 : 1))
+                        .map((req) => (
 
-                            {req.status === "Pending" && (
-                                <div className="mt-2">
-                                    <button
-                                        className="btn btn-success me-2"
-                                        onClick={() => handleLeaveStatusUpdate(req.id, "Accepted")}
-                                    >
-                                        Accept
-                                    </button>
-                                    <button
-                                        className="btn btn-danger"
-                                        onClick={() => handleLeaveStatusUpdate(req.id, "Rejected")}
-                                    >
-                                        Reject
-                                    </button>
-                                </div>
-                            )}
+                            <div key={req.id} className="list-group-item">
+                                <p><strong>Name:</strong> {req.name}</p>
+                                <p><strong>Reason:</strong> {req.reason}</p>
+                                <p>
+                                    <strong>Date:</strong>{" "}
+                                    {req.start_date
+                                        ? req.end_date
+                                            ? `${req.start_date} to ${req.end_date}`
+                                            : req.start_date
+                                        : "—"}
+                                </p>
+                                <p><strong>Status:</strong> {req.status}</p>
 
-                        </div>
-                    ))}
+                                {req.status === "Pending" && (
+                                    <div className="mt-2">
+                                        <button
+                                            className="btn btn-success me-2"
+                                            onClick={() => handleLeaveStatusUpdate(req.id, "Accepted")}
+                                        >
+                                            Accept
+                                        </button>
+                                        <button
+                                            className="btn btn-danger"
+                                            onClick={() => handleLeaveStatusUpdate(req.id, "Rejected")}
+                                        >
+                                            Reject
+                                        </button>
+                                    </div>
+                                )}
+
+                            </div>
+                        ))}
                 </div>
             )}
         </div>
